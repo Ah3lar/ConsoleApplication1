@@ -53,4 +53,22 @@ public:
     size_t getCapacity() const {
         return capacity;
     }
+
+    void Append(const T& value) {
+        if (size == capacity) {
+            resize(capacity * 2);
+        }
+        data[size++] = value;
+    }
+
+    void Remove(size_t index) {
+        if (index >= size) {
+            std::cerr << "Index out of range" << std::endl;
+            return;
+        }
+        for (size_t i = index; i < size - 1; ++i) {
+            data[i] = data[i + 1];
+        }
+        --size;
+    }
 };
